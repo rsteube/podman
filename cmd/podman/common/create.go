@@ -9,6 +9,7 @@ import (
 	"github.com/containers/podman/v4/cmd/podman/registry"
 	"github.com/containers/podman/v4/libpod/define"
 	"github.com/containers/podman/v4/pkg/domain/entities"
+	"github.com/rsteube/carapace"
 	"github.com/spf13/cobra"
 )
 
@@ -666,7 +667,10 @@ func DefineCreateFlags(cmd *cobra.Command, cf *entities.ContainerCreateOptions, 
 			securityOptFlagName, []string{},
 			"Security Options",
 		)
-		_ = cmd.RegisterFlagCompletionFunc(securityOptFlagName, AutocompleteSecurityOption)
+		// _ = cmd.RegisterFlagCompletionFunc(securityOptFlagName, AutocompleteSecurityOption)
+		carapace.Gen(cmd).FlagCompletion(carapace.ActionMap{
+			securityOptFlagName: ActionSecurityOptions(),
+		})
 
 		subgidnameFlagName := "subgidname"
 		createFlags.StringVar(

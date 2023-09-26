@@ -25,6 +25,8 @@ import (
 	systemdDefine "github.com/containers/podman/v4/pkg/systemd/define"
 	"github.com/containers/podman/v4/pkg/util"
 	securejoin "github.com/cyphar/filepath-securejoin"
+	"github.com/rsteube/carapace"
+	"github.com/rsteube/carapace/pkg/style"
 	"github.com/spf13/cobra"
 )
 
@@ -1015,19 +1017,55 @@ func AutocompleteRestartOption(cmd *cobra.Command, args []string, toComplete str
 }
 
 // AutocompleteSecurityOption - Autocomplete security options options.
-func AutocompleteSecurityOption(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
-	kv := keyValueCompletion{
-		"apparmor=":         nil,
-		"no-new-privileges": nil,
-		"seccomp=":          func(s string) ([]string, cobra.ShellCompDirective) { return nil, cobra.ShellCompDirectiveDefault },
-		"label=": func(s string) ([]string, cobra.ShellCompDirective) {
-			if strings.HasPrefix(s, "d") {
-				return []string{"disable"}, cobra.ShellCompDirectiveNoFileComp
+// func AutocompleteSecurityOption(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
+// 	kv := keyValueCompletion{
+// 		"apparmor=":         nil,
+// 		"no-new-privileges": nil,
+// 		"seccomp=":          func(s string) ([]string, cobra.ShellCompDirective) { return nil, cobra.ShellCompDirectiveDefault },
+// 		"label=": func(s string) ([]string, cobra.ShellCompDirective) {
+// 			if strings.HasPrefix(s, "d") {
+// 				return []string{"disable"}, cobra.ShellCompDirectiveNoFileComp
+// 			}
+// 			return []string{"user:", "role:", "type:", "level:", "filetype:", "disable"}, cobra.ShellCompDirectiveNoSpace | cobra.ShellCompDirectiveNoFileComp
+// 		},
+// 	}
+// 	return completeKeyValues(toComplete, kv)
+// }
+
+func ActionSecurityOptions() carapace.Action {
+	return carapace.ActionMultiPartsN("=", 2, func(c carapace.Context) carapace.Action {
+		switch len(c.Parts) {
+		case 0:
+			return carapace.Batch(
+				carapace.ActionValues("apparmor", "seccomp", "label").Suffix("="),
+				carapace.ActionValues("no-new-privileges"),
+			).ToA()
+		default:
+			switch c.Parts[0] {
+			case "seccomp":
+				return carapace.ActionFiles()
+			case "label":
+				return carapace.ActionMultiPartsN(":", 2, func(c carapace.Context) carapace.Action {
+					switch len(c.Parts) {
+					case 0:
+						return carapace.Batch(
+							carapace.ActionValues("user", "role", "type", "level", "filetype").Suffix(":"),
+							carapace.ActionValues("disable").Style(style.Red),
+						).ToA()
+					default:
+						switch c.Parts[0] {
+						case "user":
+							return carapace.ActionValues("userA", "userB") // TODO correct completions
+						default:
+							return carapace.ActionValues()
+						}
+					}
+				})
+			default:
+				return carapace.ActionValues()
 			}
-			return []string{"user:", "role:", "type:", "level:", "filetype:", "disable"}, cobra.ShellCompDirectiveNoSpace | cobra.ShellCompDirectiveNoFileComp
-		},
-	}
-	return completeKeyValues(toComplete, kv)
+		}
+	})
 }
 
 // AutocompleteStopSignal - Autocomplete stop signal options.

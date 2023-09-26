@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/rsteube/carapace"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -56,6 +57,7 @@ func main() {
 	}
 
 	rootCmd = parseCommands()
+	carapace.Gen(rootCmd)
 
 	Execute()
 	os.Exit(0)
