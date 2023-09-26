@@ -899,6 +899,49 @@ github.com/rootless-containers/rootlesskit/pkg/port/builtin/parent/tcp
 github.com/rootless-containers/rootlesskit/pkg/port/builtin/parent/udp
 github.com/rootless-containers/rootlesskit/pkg/port/builtin/parent/udp/udpproxy
 github.com/rootless-containers/rootlesskit/pkg/port/portutil
+# github.com/rsteube/carapace v0.43.6-0.20230926132714-698cd22cdab2
+## explicit; go 1.15
+github.com/rsteube/carapace
+github.com/rsteube/carapace/internal/cache
+github.com/rsteube/carapace/internal/common
+github.com/rsteube/carapace/internal/config
+github.com/rsteube/carapace/internal/env
+github.com/rsteube/carapace/internal/export
+github.com/rsteube/carapace/internal/man
+github.com/rsteube/carapace/internal/pflagfork
+github.com/rsteube/carapace/internal/shell
+github.com/rsteube/carapace/internal/shell/bash
+github.com/rsteube/carapace/internal/shell/bash_ble
+github.com/rsteube/carapace/internal/shell/elvish
+github.com/rsteube/carapace/internal/shell/export
+github.com/rsteube/carapace/internal/shell/fish
+github.com/rsteube/carapace/internal/shell/ion
+github.com/rsteube/carapace/internal/shell/nushell
+github.com/rsteube/carapace/internal/shell/oil
+github.com/rsteube/carapace/internal/shell/powershell
+github.com/rsteube/carapace/internal/shell/spec
+github.com/rsteube/carapace/internal/shell/tcsh
+github.com/rsteube/carapace/internal/shell/xonsh
+github.com/rsteube/carapace/internal/shell/zsh
+github.com/rsteube/carapace/internal/uid
+github.com/rsteube/carapace/pkg/cache
+github.com/rsteube/carapace/pkg/match
+github.com/rsteube/carapace/pkg/ps
+github.com/rsteube/carapace/pkg/style
+github.com/rsteube/carapace/pkg/traverse
+github.com/rsteube/carapace/pkg/util
+github.com/rsteube/carapace/pkg/xdg
+github.com/rsteube/carapace/third_party/github.com/acarl005/stripansi
+github.com/rsteube/carapace/third_party/github.com/drone/envsubst
+github.com/rsteube/carapace/third_party/github.com/drone/envsubst/parse
+github.com/rsteube/carapace/third_party/github.com/drone/envsubst/path
+github.com/rsteube/carapace/third_party/github.com/elves/elvish/pkg/cli/lscolors
+github.com/rsteube/carapace/third_party/github.com/elves/elvish/pkg/ui
+github.com/rsteube/carapace/third_party/github.com/mitchellh/go-ps
+github.com/rsteube/carapace/third_party/golang.org/x/sys/execabs
+# github.com/rsteube/carapace-shlex v0.0.4
+## explicit; go 1.15
+github.com/rsteube/carapace-shlex
 # github.com/seccomp/libseccomp-golang v0.10.0
 ## explicit; go 1.14
 github.com/seccomp/libseccomp-golang
@@ -937,7 +980,7 @@ github.com/sirupsen/logrus/hooks/syslog
 # github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966
 ## explicit
 github.com/skratchdot/open-golang/open
-# github.com/spf13/cobra v1.7.0
+# github.com/spf13/cobra v1.7.1-0.20230926000425-bd4d1655f665
 ## explicit; go 1.15
 github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5

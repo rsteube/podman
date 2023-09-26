@@ -54,8 +54,9 @@ require (
 	github.com/opencontainers/selinux v1.11.0
 	github.com/openshift/imagebuilder v1.2.5
 	github.com/rootless-containers/rootlesskit v1.1.1
+	github.com/rsteube/carapace v0.43.6-0.20230926132714-698cd22cdab2
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.7.1-0.20230926000425-bd4d1655f665
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.8.4
 	github.com/syndtr/gocapability v0.0.0-20200815063812-42c35b437635
@@ -165,6 +166,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/proglottis/gpgme v0.1.3 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
+	github.com/rsteube/carapace-shlex v0.0.4 // indirect
 	github.com/seccomp/libseccomp-golang v0.10.0 // indirect
 	github.com/secure-systems-lab/go-securesystemslib v0.7.0 // indirect
 	github.com/segmentio/ksuid v1.0.4 // indirect
